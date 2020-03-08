@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
-
 /**
  * Permite el ingreso de varios polinomios (solicitando cada uno de sus términos), sobre los cuales se puede realizar operaciones como:
  * - Sumar o restar (según el caso sobre el mismo polinomio), es decir; ir simplificando.
