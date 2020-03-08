@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 /**
  * Permite el ingreso de varios polinomios (solicitando cada uno de sus términos), sobre los cuales se puede realizar operaciones como:
  * - Sumar o restar (según el caso sobre el mismo polinomio), es decir; ir simplificando.
@@ -32,6 +34,8 @@ public class Punto1Vector1 {
         int Ex = 0;
         int Co = 0;
         Scanner teclado = new Scanner(System.in);
+        Scanner confirmacionAddPolinomios = new Scanner(System.in);
+        int addPoliniomios = 0;
         List<PolVectorForma1> misPolinomios = new ArrayList<>();
         
         do {
@@ -40,22 +44,27 @@ public class Punto1Vector1 {
             PolVectorForma1 polinomio = new PolVectorForma1();
 
             do {
-                while (Co != 999) {
+                while (Co != -999) {
                     System.out.println("Ingrese el coeficiente");
                     Co = teclado.nextInt();
 
-                    if (Co != 999) {
+                    if (Co != -999) {
                         System.out.println("Ingrese el exponente");
                         Ex = teclado.nextInt();
                         polinomio = polinomio.sumar(Co, Ex);
                     }
                 }
-            } while (Co != 999);
+            } while (Co != -999);
             System.out.println(polinomio);
             misPolinomios.add(polinomio);
             Co = 0;
+            
+            if(misPolinomios.size() >= 10) {
+                System.out.println("Desea seguir agregando polinomios? Si, digite 1, No digite 0");
+                addPoliniomios = confirmacionAddPolinomios.nextInt();
+            }
 
-        } while(misPolinomios.size() < 2);
+        } while(misPolinomios.size() < 10 || addPoliniomios == 1);
 
         do {
             opcion = menu();
